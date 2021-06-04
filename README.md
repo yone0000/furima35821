@@ -27,12 +27,12 @@
 | name                     | string | null: false |
 | info                     | text | null: false |
 | category_id              | integer  | null: false |
-| sales-status_id          | integer | null: false  |
-| shipping-fee-status_id   | integer | null: false |
+| sales_status_id          | integer | null: false  |
+| shipping_fee_status_id   | integer | null: false |
 | prefecture_id            | integer| null: false |
-| schedule-delivery_id     | integer| null: false  |
+| schedule_delivery_id     | integer| null: false  |
 | price                    | string| null: false　 |
-| user                       | references | null: false foreign_key: true |
+| user                      | references | null: false foreign_key: true |
 
 ### Association
 - has_one :buy
@@ -59,7 +59,7 @@
 | postal_code  | string | null: false|
 | prefecture_id|  integer  | null: false |
 | city         | string | null: false|
-| address      | string | null: false|
+| house_number      | string | null: false|
 | building     | string |
 | phone_number | string | null: false|
 | buy          | references | null: false, foreign_key: true |
