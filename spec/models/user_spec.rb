@@ -3,8 +3,25 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
+  
 
-  describe '会員情報入力' do
+    describe '会員情報入力' do
+    context  'ユーザ登録ができる時' do
+    it "nickname , email , password , password_confirmation , last_name , first_name , last_name_kana , first_name_kana , birth_dateがあれば登録OK" do
+    expect(@user).to be_valid
+    end
+    it "usernameが8文字以下で登録OK" do
+    @user.username = "abcd5678" 
+    expect(@user).to be_valid
+    end
+    it "passwordが6文字以上で登録OK" do
+    @user.password = "123456"
+    @user.password_confirmation = "123456"
+    expect(@user).to be_valid
+    end
+    end
+
+  context  'ユーザ登録ができない時' do
   it "nicknameが空だと登録できない" do
   @user.nickname = nil
   @user.valid?
@@ -37,11 +54,18 @@ RSpec.describe User, type: :model do
   @user.valid?
   expect(@user.errors_full_messages).to include("Password is too short (minimum is 6 characters)")
   end
-  it "passwordが半角英数字混合でなければ登録できない" do
-  @user.password = "aaaaaa"
+
+  it "passwordが数字のみでは登録できない" do
+  @user.password = "111111"
   @user.valid?
   expect(@user.errors_full_messages).to include("Password Include both letters and numbers")
   end
+  it "passwordが全角では登録できない" do
+    @user.password = "１１１１１１"
+    @user.valid?
+    expect(@user.errors_full_messages).to include("Password Include both letters and numbers")
+    end
+
   it "password_confirmationが空では登録できない" do
   @user.password_confirmation = nil
   @user.valid?
@@ -98,5 +122,7 @@ RSpec.describe User, type: :model do
   @user.valid?
   expect(@user.errors_full_messages).to include("Birth_day can't be blank")
   end
+  end
+  
   end
   end
