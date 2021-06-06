@@ -2,6 +2,7 @@
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
+## users テーブル
 
 | Column              | Type   | Options     |
 | ------------------  | ------ | ----------- |
@@ -12,7 +13,7 @@ application up and running.
 | first_name          | string | null: false |
 | last_name_kana      | string | null: false |
 | first_name_kana     | string | null: false |
-| birth_date     | date | null: false |
+| birth_date          | date | null: false |
 
 
 
@@ -21,7 +22,7 @@ application up and running.
 - has_many :buys
   
 
-* Configuration
+## items テーブル
 
 | Column                        | Type   | Options     |
 | ------                        | ------ | ----------- |
