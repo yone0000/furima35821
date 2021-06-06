@@ -85,22 +85,22 @@ RSpec.describe User, type: :model do
   it "名字が空だと登録できない" do
     @user.first_name = " "
     @user.valid?
-    expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid. Input full-width characters.")
+    expect(@user.errors.full_messages).to include("First name Full-width characters", "First name can't be blank")
   end
   it "名前が空だと登録できない" do
     @user.last_name = " "
     @user.valid?
-    expect(@user.errors.full_messages).to include("Last name can't be blank", "Last name is invalid. Input full-width characters.")
+    expect(@user.errors.full_messages).to include("Last name Full-width characters", "Last name can't be blank")
   end
   it "名字は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
     @user.first_name = "kana"
     @user.valid?
-    expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+    expect(@user.errors.full_messages).to include("First name Full-width characters")
   end
   it "名前は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
     @user.last_name = "kana"
     @user.valid?
-    expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
+    expect(@user.errors.full_messages).to include("Last name Full-width characters")
   end
   it "フリガナ（名字）が空だと登録できない" do
     @user.first_name_kana = " "
