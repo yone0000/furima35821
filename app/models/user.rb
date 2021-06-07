@@ -15,7 +15,9 @@ class User < ApplicationRecord
               validates :last_name_kana
        end
        end
-          
-   
        validates :password,format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z{6,}/i, message: "is invalid" }
+       
+       has_many :items
+       has_many :buys
+
 end
