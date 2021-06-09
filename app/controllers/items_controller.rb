@@ -21,25 +21,25 @@ class ItemsController < ApplicationController
         end      
     end
     
-    def destoroy
-    end
+    # def destoroy
+    # end
 
     def show
 
     end
 
     
-    def edit 
+    # def edit 
 
-    end
+    # end
 
-    def update
-    end
+    # def update
+    # end
 
-    def purchase
-        @item= Item.find(params[:id])
-        @item.update(buyer_id: current_user.id)
-      end
+    # def purchase
+    #     @item= Item.find(params[:id])
+    #     @item.update(buyer_id: current_user.id)
+    #   end
 
 
       private
