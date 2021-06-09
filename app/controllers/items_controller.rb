@@ -26,13 +26,12 @@ class ItemsController < ApplicationController
     # end
 
     def show
-        @items = Item.includes(:user)
+    
         
     end
 
     
     def edit 
-        @items = Item.includes(:user)
         
     end
 
