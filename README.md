@@ -62,7 +62,7 @@ application up and running.
 | prefecture_id|  integer  | null: false |
 | city         | string | null: false|
 | house_number  | string | null: false|
-| building     | integer |  null: false
+| building     | integer |
 | phone_number | string | null: false|
 | sell_item        | references | foreign_key: true |
 | user         | references | foreign_key: true |

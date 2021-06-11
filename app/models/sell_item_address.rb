@@ -17,7 +17,7 @@ class SellItemAddress < ActiveHash::Base
     def save
       # 各テーブルにデータを保存する処理を書く   
         sell_item = SellItem.create(user_id: user_id, item_id: item_id)
-        Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building: building, phone_number: phone_number, sell_item_id: sell_item_id )
+        Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building: building, phone_number: phone_number, sell_item: sell_item )
     end
 end
 
