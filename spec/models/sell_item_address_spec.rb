@@ -23,6 +23,16 @@ RSpec.describe SellItemAddress, type: :model do
     end
   
     context '内容に問題がある場合' do
+      it "user_idが無い場合は登録できないこと" do
+        @sell_item_address.user_id = " "
+        @sell_item_address.valid?
+        expect(@sell_item_address.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idが無い場合は登録できないこと" do
+        @sell_item_address.item_id = " "
+        @sell_item_address.valid?
+        expect(@sell_item_address.errors.full_messages).to include("Item can't be blank")
+      end
       it "郵便番号が空では保存ができないこと" do
         @sell_item_address.postal_code = " "
         @sell_item_address.valid?
@@ -58,6 +68,17 @@ RSpec.describe SellItemAddress, type: :model do
         @sell_item_address.valid?
         expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")
     end
+       it "電話番号は、１２桁以上では登録できない" do
+        @sell_item_address.phone_number = '1231231234321'
+        @sell_item_address.valid?
+        expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")
+    end
+       it "英字のみでは登録できないこと" do
+       @sell_item_address.phone_number = 'kkkkkkkkkkk'
+       @sell_item_address.valid?
+       expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")  
+     end
+
   end
 end
 end
