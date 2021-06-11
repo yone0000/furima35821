@@ -1,19 +1,15 @@
 class BuyItemsController < ApplicationController
-    before_action :authenticate_user!, only: [:index,:new, :create]
-    before_action :set_item, only: [:index]
-    before_action :sold_out_item, only: [:index]
-    before_action :redirect_user, only: [:index]
+    before_action :authenticate_user!, only: [:index, :create]
+    before_action :set_item, only: [:index, :create]
+    before_action :sold_out_item, only: [:index, :create]
+    before_action :redirect_user, only: [:index, :create]
     def index    
         @sell_item_address = SellItemAddress.new
         @items = Item.all
     end
-
-    def new 
-    end
-
   
     def create
-        @item = Item.find(params[:item_id])
+
         @sell_item_address = SellItemAddress.new(sell_item_address_params)
         if @sell_item_address.valid?
             pay_item

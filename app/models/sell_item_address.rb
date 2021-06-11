@@ -1,6 +1,6 @@
 class SellItemAddress < ActiveHash::Base
     include ActiveModel::Model
-    attr_accessor :price, :user_id, :item_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :sell_item_id, :user_id, :item_id, :token
+    attr_accessor :price, :user_id, :item_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :user_id, :item_id, :token
 
     with_options presence: true do
       validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}

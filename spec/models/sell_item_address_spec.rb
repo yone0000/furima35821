@@ -12,7 +12,12 @@ RSpec.describe SellItemAddress, type: :model do
     end
   
     context '内容に問題ない場合' do
-      it "priceがあれば保存ができること" do
+      it "全ての情報が間違いなければ保存ができること" do
+        expect(@sell_item_address).to be_valid
+      end
+      it "建物名が空でも保存ができること" do
+        @sell_item_address.building = " "
+        @sell_item_address.valid?
         expect(@sell_item_address).to be_valid
       end
     end
