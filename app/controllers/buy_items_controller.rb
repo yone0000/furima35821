@@ -5,7 +5,6 @@ class BuyItemsController < ApplicationController
     before_action :redirect_user, only: [:index, :create]
     def index    
         @sell_item_address = SellItemAddress.new
-        @items = Item.all
     end
   
     def create

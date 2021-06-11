@@ -61,10 +61,11 @@ application up and running.
 | postal_code  | string | null: false|
 | prefecture_id|  integer  | null: false |
 | city         | string | null: false|
-| house_number      | string | null: false|
+| house_number  | string | null: false|
 | building     | integer |  null: false
 | phone_number | string | null: false|
-| sell_item         | references | foreign_key: true |
+| sell_item        | references | foreign_key: true |
+| user         | references | foreign_key: true |
 
 
 ### Association
