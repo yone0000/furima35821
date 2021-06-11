@@ -33,6 +33,11 @@ RSpec.describe SellItemAddress, type: :model do
         @sell_item_address.valid?
         expect(@sell_item_address.errors.full_messages).to include("Item can't be blank")
       end
+      it "tokenが無い場合は登録できないこと" do
+        @sell_item_address.token = " "
+        @sell_item_address.valid?
+        expect(@sell_item_address.errors.full_messages).to include("Token can't be blank")
+      end
       it "郵便番号が空では保存ができないこと" do
         @sell_item_address.postal_code = " "
         @sell_item_address.valid?
@@ -78,7 +83,16 @@ RSpec.describe SellItemAddress, type: :model do
        @sell_item_address.valid?
        expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")  
      end
-
+     it "電話番号が数字のみでないと登録できないこと(ハイフンあり)" do
+      @sell_item_address.phone_number = '000-0000-0000'
+      @sell_item_address.valid?
+      expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")  
+    end
+    it "全角数字だと登録できないこと" do
+      @sell_item_address.phone_number = '０００００００００００'
+      @sell_item_address.valid?
+      expect(@sell_item_address.errors.full_messages).to include("Phone number is invalid")  
+    end
   end
 end
 end

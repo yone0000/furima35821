@@ -62,9 +62,9 @@ application up and running.
 | prefecture_id|  integer  | null: false |
 | city         | string | null: false|
 | house_number      | string | null: false|
-| building     | string |
+| building     | integer |  null: false
 | phone_number | string | null: false|
-| buy          | references | null: false, foreign_key: true |
+| sell_item         | references | foreign_key: true |
 
 
 ### Association

@@ -27,7 +27,7 @@ class BuyItemsController < ApplicationController
       params.require(:sell_item_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
     end
     def pay_item       
-            Payjp.api_key = "sk_test_bfd5cd8aa15a6aaf79e09861"  
+        Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
             Payjp::Charge.create(
               amount: @item.price,  
               card: sell_item_address_params[:token],    
