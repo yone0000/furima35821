@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
     before_action :authenticate_user!, only:[:new, :create, :edit, :update]
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     before_action :set_user, only: [:edit, :update, :destroy]
+    
 
     def index 
         @items = Item.all
@@ -64,6 +65,7 @@ class ItemsController < ApplicationController
             redirect_to root_path
         end
       end
+
 end
 
 
