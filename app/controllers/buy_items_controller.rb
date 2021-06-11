@@ -2,6 +2,7 @@ class BuyItemsController < ApplicationController
     before_action :authenticate_user!, only: [:index,:new, :create]
     before_action :set_item, only: [:index]
     before_action :sold_out_item, only: [:index]
+    before_action :redirect_user, only: [:index]
     def index    
         @sell_item_address = SellItemAddress.new
         @items = Item.all
@@ -43,6 +44,10 @@ class BuyItemsController < ApplicationController
     end
     def sold_out_item
         redirect_to root_path if @item.sell_item.present?
+    end
+
+    def redirect_user
+        redirect_to root_path if current_user.id == @item.user_id 
     end
 
   end

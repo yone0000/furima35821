@@ -34,7 +34,9 @@ class ItemsController < ApplicationController
 
     
     def edit 
-        
+      if @item.sell_item.present?
+        redirect_to root_path 
+      end
     end
 
     def update
